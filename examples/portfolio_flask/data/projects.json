@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "example-project",
+    "title": "Example Project",
+    "image": "https://via.placeholder.com/300",
+    "description": "This is an example project description.",
+    "tags": ["demo", "flask"],
+    "visible": true
+  }
+]
