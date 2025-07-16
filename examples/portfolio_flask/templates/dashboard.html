@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Admin Dashboard</h1>
+<a href="{{ url_for('new_project') }}" class="btn btn-success mb-3">Add Project</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Visible</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for project in projects %}
+    <tr>
+      <td>{{ project.title }}</td>
+      <td>{{ project.slug }}</td>
+      <td>{{ 'Yes' if project.visible else 'No' }}</td>
+      <td>
+        <a href="{{ url_for('edit_project', slug=project.slug) }}" class="btn btn-primary btn-sm">Edit</a>
+        <form action="{{ url_for('delete_project', slug=project.slug) }}" method="post" class="d-inline">
+          <button class="btn btn-danger btn-sm" onclick="return confirm('Delete project?')">Delete</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
